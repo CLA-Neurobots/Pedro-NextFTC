@@ -31,17 +31,16 @@ public class ExtendoSubsystem extends Subsystem {
 
     public Command extendCommand(double power) {
         return new SequentialGroup(
-                new SetPower(motor, power),
-                new WaitUntil(() -> Math.abs(motor.getVelocity()) < velocityThreshold),
-                new HoldPosition(motor, controller)
+                new SetPower(motor, power,this),
+                new WaitUntil(() -> Math.abs(motor.getVelocity()) < velocityThreshold)
         );
     }
 
     public Command retractCommand(double power) {
         return new SequentialGroup(
-                new SetPower(motor, -power),
-                new WaitUntil(() -> Math.abs(motor.getVelocity()) < velocityThreshold),
-                new HoldPosition(motor, controller)
+                new SetPower(motor, -power,this),
+                new WaitUntil(() -> Math.abs(motor.getVelocity()) < velocityThreshold)
+
         );
     }
 
