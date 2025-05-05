@@ -15,6 +15,7 @@ import com.rowanmcalpin.nextftc.ftc.hardware.controllables.SetPower;
 public class ExtendoSubsystem extends Subsystem {
     private MotorEx motor;
     public String name = "extendoMotor";
+    public static final ExtendoSubsystem INSTANCE = new ExtendoSubsystem();
     public PIDFController controller = new PIDFController(0.01, 0.0, 0.0, new StaticFeedforward(0.1));
 
     private double velocityThreshold = 1;
